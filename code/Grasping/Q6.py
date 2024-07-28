@@ -17,7 +17,7 @@ for contour in contours:
     if cv2.contourArea(contour) > 400:
         rect = cv2.minAreaRect(contour)
         box = cv2.boxPoints(rect)
-        box = np.int0(box)
+        box = np.intp(box)
 
         cv2.drawContours(image, [box], 0, (0, 255, 0), 2)
 
@@ -36,10 +36,10 @@ for contour in contours:
         grasp_point1 = center + (width / 2) * eigenvector
         grasp_point2 = center - (width / 2) * eigenvector
 
-        cv2.circle(image, tuple(np.int0(grasp_point1)), 4, (255, 0, 0), -1)
-        cv2.circle(image, tuple(np.int0(grasp_point2)), 4, (255, 0, 0), -1)
-        cv2.circle(image, tuple(np.int0(center)), 5, (0, 0, 0), -1)
-        cv2.line(image, tuple(np.int0(grasp_point1)), tuple(np.int0(grasp_point2)), (0, 0, 255), 2)
+        cv2.circle(image, tuple(np.intp(grasp_point1)), 4, (255, 0, 0), -1)
+        cv2.circle(image, tuple(np.intp(grasp_point2)), 4, (255, 0, 0), -1)
+        cv2.circle(image, tuple(np.intp(center)), 5, (0, 0, 0), -1)
+        cv2.line(image, tuple(np.intp(grasp_point1)), tuple(np.intp(grasp_point2)), (0, 0, 255), 2)
 
 
 plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
